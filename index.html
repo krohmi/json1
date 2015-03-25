@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <script src="jquery-2.1.3.min.js"></script>
+ <script src="jquery.jqGrid.min.js"></script>
+ <script src="grid.locale-pl.js"></script> 
+  <script src="jquery-ui.min.js"></script> 
+    <link rel="stylesheet" type="text/css" media="screen" href="jquery-ui.min.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="ui.jqgrid.css" />
+    <meta charset="utf-8" />
+    <title>Przepisy - test 1</title>
+
+ <style>
+#draggable { width: 300px; height: 50px; padding: 0.5em; border: 1px solid #656565; background-color:#ffdd00;}
+</style>
+
+</head>
+<body>
+<div id="draggable">test1</div>
+    <table id="jqGrid"></table>
+    <div id="jqGridPager"></div>
+
+<script type="text/javascript"> 
+
+
+$( "#draggable" ).click(function() {
+
+		$("#jqGrid").jqGrid({
+		url: 'http://www.mediafit.pl/przepisy.json',
+		datatype: "json",
+		 colModel: [
+			{ label: 'Nazwa przepisu', name: 'nazwa', width: 75 },
+			{ label: 'Składniki', name: 'skladniki', width: 90 },
+			{ label: 'Tagi', name: 'tagi', width: 100 },
+			{ label: 'Czas', name: 'czas', width: 80 }
+		],
+		viewrecords: true, // show the current page, data rang and total records on the toolbar
+		autowidth: true,
+		sortable: true,		
+	shrinkToFit: true,		
+		loadonce: true, // this is just for the demo
+		pager: "#jqGridPager"
+	});
+});
+
+ </script>
+
+ <script>
+$(function() {
+$( "#draggable" ).draggable();
+});
+</script>
+
+    
+</body>
+</html>
